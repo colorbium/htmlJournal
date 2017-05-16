@@ -48,10 +48,10 @@ function openFileSystem(){
     }
     onFileSystemOpened(fs, true);
   });
-});
+}
 //  window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 //  window.requestFileSystem(window.PERSISTENT, 5*1024*1024, onInitFs, error);
-}
+
 
 function error(e) {
   var msg = '';
