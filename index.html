@@ -1,10 +1,29 @@
 <html>
   <head>
     <title>Journal WIP</title>
+    <script type="text/javascript" src="filer.js"></script>
+ <script type="text/javascript" src="editor.js"></script>
     <script type="text/javascript" src="drawtools.js"></script>
   </head>
   <body onload="freeDraw()">
-    <canvas id="page" width="500" height="500"/>
+    <canvas id="page" width="100%" height="100%"/>
+    <div id="fs-selector">
+    <div id="conflict-policy" class="hide">
+      <input id="auto-conflict-resolve" type="checkbox" checked>
+      Resolves Conflicts Automatically
+      </input>
+    </div>
+    <button id="fs-syncable" class="fs-button">Syncable</button>
+    <button id="fs-temporary" class="fs-button">Temporary</button>
+  </div>
 
+  <div id="error" class="error" class="hide"></div>
+
+  <div class="filer" id="filer"></div>
+  <div class="editor" id="editor"></div>
+
+  <div id="log"></div>
+  <div id="info" class="info" class="hide"></div>
+  <script src="js/main.js"></script>
   </body>
 </html>
