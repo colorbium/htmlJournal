@@ -52,19 +52,24 @@ function onInitFs(fs) {
 
 }
 function openFileSystem(){
+/*source: http://blog.teamtreehouse.com/building-an-html5-text-editor-with-the-filesystem-apis */
+  navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 5,
+    function(grantedSize) {
 
-  var requestedBytes = 1024*1024*280;
+      // Request a file system with the new size.
+      window.requestFileSystem(window.PERSISTENT, grantedSize, function(fs) {
 
-navigator.webkitPersistentStorage.requestQuota (
-    requestedBytes, function(grantedBytes) {
-        console.log('we were granted ', grantedBytes, 'bytes');
+        // Set the filesystem variable.
+        filesystem = fs;
 
-    }, function(e) { console.log('Error', e); }
-);
-var canvas = document.getElementById("page");
-canvas.addEventListener("touchend", writeFile, false);
-//  window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
-//  window.requestFileSystem(window.PERSISTENT, 5*1024*1024, onInitFs, error);
+        // Setup event listeners on the form.
+        var canvas = document.getElementById("page");
+        canvas.addEventListener("touchend", writeFile(filesystem), false);
+
+
+      }, error);
+
+    }, error);
 }
 
 function error(e) {
