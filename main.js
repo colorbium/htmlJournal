@@ -43,7 +43,7 @@ function writeFile(fs, fn) {
     }, error('error creating file'));
 
   }, error('error creating file'));
-
+}
 
 function onInitFs(fs) {
   console.log('File System Created')
