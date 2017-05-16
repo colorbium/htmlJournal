@@ -1,4 +1,5 @@
 var supportsSyncFileSystem = chrome && chrome.syncFileSystem;
+
 function readFile(fs, fn) {
   fs.root.getFile(fn, {}, function(fileEntry) {
 
@@ -26,10 +27,27 @@ function onInitFs(fs) {
 
 }
 function openFileSystem(){
-  window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
-  window.requestFileSystem(PERSISTENT, grantedBytes, onInitFs, errorHandler);
-}, function(e) {
-  console.log('Error', e);
+  if (!chrome || !chrome.syncFileSystem ||
+      !chrome.syncFileSystem.requestFileSystem) {
+    error('Syncable FileSystem is not supported in your environment.');
+    return;
+  }
+  $('#fs-syncable').classList.add('selected');
+  $('#fs-temporary').classList.remove('selected');
+  if (chrome.syncFileSystem.setConflictResolutionPolicy) {
+    chrome.syncFileSystem.setConflictResolutionPolicy('last_write_win');
+    show('#conflict-policy')
+  }
+  log('Obtaining syncable FileSystem...');
+  chrome.syncFileSystem.requestFileSystem(function (fs) {
+    if (chrome.runtime.lastError) {
+      error('requestFileSystem: ' + chrome.runtime.lastError.message);
+      $('#fs-syncable').classList.remove('selected');
+      hide('#conflict-policy')
+      return;
+    }
+    onFileSystemOpened(fs, true);
+  });
 });
 //  window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 //  window.requestFileSystem(window.PERSISTENT, 5*1024*1024, onInitFs, error);
