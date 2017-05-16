@@ -15,9 +15,9 @@ function readFile(fs, fn) {
        };
 
        reader.readAsText(file);
-    }, errorHandler);
+    }, error);
 
-  }, errorHandler);
+  }, error);
 
 }
 function onInitFs(fs) {
