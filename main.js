@@ -53,9 +53,14 @@ function onInitFs(fs) {
 }
 function openFileSystem(){
 
-  window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
-  window.requestFileSystem(PERSISTENT, grantedBytes, onInitFs, error);
-}, error);
+  var requestedBytes = 1024*1024*280;
+
+navigator.webkitPersistentStorage.requestQuota (
+    requestedBytes, function(grantedBytes) {
+        console.log('we were granted ', grantedBytes, 'bytes');
+
+    }, function(e) { console.log('Error', e); }
+);
 var canvas = document.getElementById("page");
 canvas.addEventListener("touchend", writeFile, false);
 //  window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
