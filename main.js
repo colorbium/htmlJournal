@@ -27,13 +27,12 @@ function onInitFs(fs) {
 
 }
 function openFileSystem(){
-  if (!chrome || !chrome.syncFileSystem ||
-      !chrome.syncFileSystem.requestFileSystem) {
-    error('Syncable FileSystem is not supported in your environment.');
-    return;
-  }
-  $('#fs-syncable').classList.add('selected');
-  $('#fs-temporary').classList.remove('selected');
+//  if (!chrome || !chrome.syncFileSystem ||
+//      !chrome.syncFileSystem.requestFileSystem) {
+//    error('Syncable FileSystem is not supported in your environment.');
+//    return;
+//  }
+
   if (chrome.syncFileSystem.setConflictResolutionPolicy) {
     chrome.syncFileSystem.setConflictResolutionPolicy('last_write_win');
     show('#conflict-policy')
