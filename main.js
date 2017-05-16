@@ -57,7 +57,7 @@ function openFileSystem(){
     function(grantedSize) {
 
       // Request a file system with the new size.
-      window.requestFileSystem(window.PERSISTENT, grantedSize, function(fs) {
+      window.webkitRequestFileSystem(window.PERSISTENT, grantedSize, function(fs) {
 
         // Set the filesystem variable.
         filesystem = fs;
