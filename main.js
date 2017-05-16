@@ -18,9 +18,9 @@ function readFile(fs, fn) {
   }, error);
 
 }
-function writeFile(fs, fn) {
+function writeFile(fs) {
 
-  fs.root.getFile(fn, {create: true}, function(fileEntry) {
+  fs.root.getFile('a.jpg', {create: true}, function(fileEntry) {
 
     // Create a FileWriter object for our FileEntry (log.txt).
     fileEntry.createWriter(function(fileWriter) {
@@ -52,11 +52,12 @@ function onInitFs(fs) {
 
 }
 function openFileSystem(){
-  var canvas = document.getElementById("page");
-  canvas.addEventListener("touchend", writeFile, false);
+
   window.webkitStorageInfo.requestQuota(PERSISTENT, 1024*1024, function(grantedBytes) {
   window.requestFileSystem(PERSISTENT, grantedBytes, onInitFs, error);
 }, error);
+var canvas = document.getElementById("page");
+canvas.addEventListener("touchend", writeFile, false);
 //  window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 //  window.requestFileSystem(window.PERSISTENT, 5*1024*1024, onInitFs, error);
 }
