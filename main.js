@@ -56,5 +56,5 @@ function openFileSystem(){
 
 
 function error(e) {
-  console.log('Error ' + e.code);
+  console.log('Error ' + e);
 }
