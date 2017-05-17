@@ -9,12 +9,13 @@ function readFile(fs, fn) {
        var reader = new FileReader();
 
        reader.onloadend = function(e) {
-         var txtArea = document.createElement('textarea');
-         txtArea.value = this.result;
-         document.body.appendChild(txtArea);
+         //var txtArea = document.createElement('textarea');
+         var canvas.getElementById("canvas");
+         canvas.value = this.result;
+        // document.body.appendChild(txtArea);
        };
 
-       reader.readAsText(file);
+       reader.readAsDataURL(file);
     }, error);
 
   }, error);
@@ -140,3 +141,4 @@ function listFiles() {
 
   fetchEntries();
 }
+/*end outside code */
