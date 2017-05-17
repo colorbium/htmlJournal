@@ -73,7 +73,10 @@ function openFileSystem(){
 
     }, error);
 }
+function errorHandler(e) {
 
+  console.log('Error: ' + e);
+}
 function error(e) {
 
   console.log('Error: ' + e);
