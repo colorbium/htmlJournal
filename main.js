@@ -1,6 +1,7 @@
 var filesystem = null;
 var fileList = null;
-function readFile(fs, fn) {
+function readFile(fn) {
+  var fs = filesystem;
   fs.root.getFile(fn, {}, function(fileEntry) {
 
     // Get a File object representing the file,
