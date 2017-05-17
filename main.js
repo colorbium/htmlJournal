@@ -1,5 +1,5 @@
 var filesystem = null;
-var fileList = document.getElementById("file-list");
+var fileList = null;
 function readFile(fs, fn) {
   fs.root.getFile(fn, {}, function(fileEntry) {
 
@@ -55,6 +55,7 @@ function onInitFs(fs) {
 }
 window.onload = function openFileSystem(){
 /*source: http://blog.teamtreehouse.com/building-an-html5-text-editor-with-the-filesystem-apis */
+  fileList = document.getElementById("file-list");
   navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 5,
     function(grantedSize) {
 
