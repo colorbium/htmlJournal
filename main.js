@@ -111,7 +111,7 @@ function displayEntries(entries) {
     // is clicked.
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      loadFile(entry.name);
+      readFile(entry.name);
     });
 
     // Setup an event listener that will delete the file when the delete link
