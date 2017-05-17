@@ -53,7 +53,7 @@ function onInitFs(fs) {
   }, error('error creating file'));
 
 }
-document.onload = function openFileSystem(){
+function openFileSystem(){
 /*source: http://blog.teamtreehouse.com/building-an-html5-text-editor-with-the-filesystem-apis */
   fileList = document.getElementById("file-list");
   navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 5,
