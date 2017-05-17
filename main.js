@@ -10,7 +10,7 @@ function readFile(fs, fn) {
 
        reader.onloadend = function(e) {
          //var txtArea = document.createElement('textarea');
-         var canvas.getElementById("canvas");
+         var canvas = document.getElementById("canvas");
          canvas.value = this.result;
         // document.body.appendChild(txtArea);
        };
