@@ -11,7 +11,7 @@ function readFile(fn) {
 
        reader.onloadend = function(e) {
          //var txtArea = document.createElement('textarea');
-         var canvas = document.getElementById("canvas");
+         var canvas = document.getElementById("page");
          canvas.value = this.result;
         // document.body.appendChild(txtArea);
        };
