@@ -1,5 +1,5 @@
 var filesystem = null;
-var fileList = document.getElementById('file-list');
+var fileList = document.getElementById("file-list");
 function readFile(fs, fn) {
   fs.root.getFile(fn, {}, function(fileEntry) {
 
