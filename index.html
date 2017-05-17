@@ -5,24 +5,9 @@
  <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript" src="drawtools.js"></script>
   </head>
-  <body onload="openFileSystem(); freeDraw()">
+  <body onload="freeDraw()">
     <canvas id="page" width="100%" height="100%"></canvas>
-    <div id="fs-selector">
-    <div id="conflict-policy" class="hide">
-      <input id="auto-conflict-resolve" type="checkbox" checked>
-      Resolves Conflicts Automatically
-      </input>
+    <div id="file-list">
     </div>
-    <button id="fs-syncable" class="fs-button">Syncable</button>
-    <button id="fs-temporary" class="fs-button">Temporary</button>
-  </div>
-
-  <div id="error" class="error" class="hide"></div>
-
-  <div class="filer" id="filer"></div>
-  <div class="editor" id="editor"></div>
-
-  <div id="log"></div>
-  <div id="info" class="info" class="hide"></div>
   </body>
 </html>

@@ -1,3 +1,5 @@
+var filesystem = null;
+
 function readFile(fs, fn) {
   fs.root.getFile(fn, {}, function(fileEntry) {
 
@@ -66,7 +68,7 @@ function openFileSystem(){
         var canvas = document.getElementById("page");
         canvas.addEventListener("touchend", writeFile(filesystem), false);
 
-
+        listFiles();
       }, error);
 
     }, error);
@@ -75,4 +77,62 @@ function openFileSystem(){
 function error(e) {
 
   console.log('Error: ' + e);
+}
+
+
+
+/*src http://codepen.io/matt-west/pen/CrfKh?editors=1010 */
+
+function displayEntries(entries) {
+  // Clear out the current file browser entries.
+  fileList.innerHTML = '';
+
+  entries.forEach(function(entry, i) {
+    var li = document.createElement('li');
+
+    var link = document.createElement('a');
+    link.innerHTML = entry.name;
+    link.className = 'edit-file';
+    li.appendChild(link);
+
+    var delLink = document.createElement('a');
+    delLink.innerHTML = '[x]';
+    delLink.className = 'delete-file';
+    li.appendChild(delLink);
+
+    fileList.appendChild(li);
+
+    // Setup an event listener that will load the file when the link
+    // is clicked.
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      loadFile(entry.name);
+    });
+
+    // Setup an event listener that will delete the file when the delete link
+    // is clicked.
+    delLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      deleteFile(entry.name);
+    });
+  });
+}
+
+
+function listFiles() {
+  var dirReader = filesystem.root.createReader();
+  var entries = [];
+
+  var fetchEntries = function() {
+    dirReader.readEntries(function(results) {
+      if (!results.length) {
+        displayEntries(entries.sort().reverse());
+      } else {
+        entries = entries.concat(results);
+        fetchEntries();
+      }
+    }, errorHandler);
+  };
+
+  fetchEntries();
 }
