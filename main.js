@@ -139,5 +139,3 @@ function listFiles() {
 
   fetchEntries();
 }
-
-openFileSystem();
