@@ -27,7 +27,7 @@ function readFile(fn) {
 function onInitFs(fs) {
   console.log('File System Created')
   fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry) {
-  }, error('error creating file'));
+  }, error('3'));
 
 }
 function openFileSystem(){
@@ -67,9 +67,9 @@ function openFileSystem(){
 
               fileWriter.write(blob);
 
-            }, error('error creating file'));
+            }, error('1'));
 
-          }, error('error creating file'));
+          }, error('2'));
         }
         listFiles();
       }, error);
@@ -124,7 +124,17 @@ function displayEntries(entries) {
   });
 }
 
-
+function readerror(e)
+{
+  console.log(e.name);
+  if(e.name == "NotFoundError")
+  {
+      openFileSystem();
+  }
+  else {
+    errorHandler();
+  }
+}
 function listFiles() {
   var dirReader = filesystem.root.createReader();
   var entries = [];
@@ -137,7 +147,7 @@ function listFiles() {
         entries = entries.concat(results);
         fetchEntries();
       }
-    }, errorHandler);
+    }, readerror(e));
   };
 
   fetchEntries();
