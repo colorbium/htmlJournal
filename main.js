@@ -147,7 +147,7 @@ function listFiles() {
         entries = entries.concat(results);
         fetchEntries();
       }
-    }, readerror;
+    }, readerror);
   };
 
   fetchEntries();
