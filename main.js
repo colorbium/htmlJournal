@@ -124,16 +124,17 @@ function displayEntries(entries) {
   });
 }
 
-function readerror(e)
+function init()
 {
-  console.log(e.name);
-  if(e.name == "NotFoundError")
+  if(filesystem==null)
   {
-      openFileSystem();
+    openFileSystem();
   }
-  else {
-    errorHandler();
+  else
+  {
+    listFiles();
   }
+
 }
 function listFiles() {
   var dirReader = filesystem.root.createReader();
@@ -147,7 +148,7 @@ function listFiles() {
         entries = entries.concat(results);
         fetchEntries();
       }
-    }, readerror);
+    }, error('4'));
   };
 
   fetchEntries();
