@@ -47,7 +47,7 @@ function openFileSystem(){
         canvas.addEventListener("touchend", writeFile(filesystem), false);
         function writeFile(fs) {
 
-          fs.root.getFile('a.jpg', {create: true}, function(fileEntry) {
+          fs.root.getFile('a.jpg', {create: true, exclusive:false}, function(fileEntry) {
 
             // Create a FileWriter object for our FileEntry (log.txt).
             fileEntry.createWriter(function(fileWriter) {
