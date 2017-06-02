@@ -23,7 +23,32 @@ function readFile(fn) {
 
 }
 
+function writeFile(fs) {
 
+  fs.root.getFile('a.jpg', {create: true, exclusive:false}, function(fileEntry) {
+
+    // Create a FileWriter object for our FileEntry (log.txt).
+    fileEntry.createWriter(function(fileWriter) {
+
+      fileWriter.onwriteend = function(e) {
+        console.log('Write completed.');
+      };
+
+      fileWriter.onerror = function(e) {
+        console.log('Write failed: ' + e.toString());
+      };
+
+      // Create a new Blob and write it to log.txt.
+      var canvas = document.getElementById("page");
+
+      var blob = new Blob([canvas.toDataURL()], {type: 'image/jpg'});
+
+      fileWriter.write(blob);
+
+    }, error('1'));
+
+  }, error('2'));
+}
 function onInitFs(fs) {
   console.log('File System Created')
   fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry) {
@@ -45,32 +70,7 @@ function openFileSystem(){
         // Setup event listeners on the form.
         var canvas = document.getElementById("page");
         canvas.addEventListener("touchend", writeFile(filesystem), false);
-        function writeFile(fs) {
 
-          fs.root.getFile('a.jpg', {create: true, exclusive:false}, function(fileEntry) {
-
-            // Create a FileWriter object for our FileEntry (log.txt).
-            fileEntry.createWriter(function(fileWriter) {
-
-              fileWriter.onwriteend = function(e) {
-                console.log('Write completed.');
-              };
-
-              fileWriter.onerror = function(e) {
-                console.log('Write failed: ' + e.toString());
-              };
-
-              // Create a new Blob and write it to log.txt.
-              var canvas = document.getElementById("page");
-
-              var blob = new Blob([canvas.toDataURL()], {type: 'image/jpg'});
-
-              fileWriter.write(blob);
-
-            }, error('1'));
-
-          }, error('2'));
-        }
         listFiles();
       }, error);
 
