@@ -5,7 +5,7 @@ function readFile(fn) {
   fs.root.getFile(fn, {}, function(fileEntry) {
 
     // Get a File object representing the file,
-    // then use FileReader to read its contents.
+    // then use FileReader to read its contents.com
     fileEntry.file(function(file) {
        var reader = new FileReader();
 
@@ -147,7 +147,7 @@ function listFiles() {
         entries = entries.concat(results);
         fetchEntries();
       }
-    }, readerror(e));
+    }, readerror());
   };
 
   fetchEntries();
