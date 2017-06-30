@@ -13,7 +13,7 @@ function readFile(fn) {
          //var txtArea = document.createElement('textarea');
          var canvas = document.getElementById("page");
 	 var drawing = new Image();
-	drawing.src = "filesystem:"+window.location.href +"/persistent/" + fn; // can also be a remote URL e.g. http://
+	drawing.src = "filesystem:"+window.location.origin +"/persistent/" + fn; // can also be a remote URL e.g. http://
 	drawing.onload = function() {
    canvas.drawImage(drawing,0,0);
 };
