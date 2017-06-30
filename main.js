@@ -31,9 +31,10 @@ function dataURItoBlob(dataURI, callback){
     {
 	ia[i] = byteString.charCodeAt(i);
     }
-    var bb = new window.WebKitBlobBuilder();
-    bb.append(ab);
-    return bb.getBlob(mimeString);
+ //   var bb = new window.WebKitBlobBuilder();
+  //  bb.append(ab);
+    var blob = new Blob([ab]);
+    return blob;//bb.getBlob(mimeString);
 };
 function writeFile(fs) {
 
