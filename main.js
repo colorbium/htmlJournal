@@ -38,7 +38,7 @@ function dataURItoBlob(dataURI, callback){
 };
 function writeFile(fs) {
 
-  fs.root.getFile('a.jpg', {create: true, exclusive:false}, function(fileEntry) {
+  fs.root.getFile('a.png', {create: true, exclusive:false}, function(fileEntry) {
 
     // Create a FileWriter object for our FileEntry (log.txt).
     fileEntry.createWriter(function(fileWriter) {
