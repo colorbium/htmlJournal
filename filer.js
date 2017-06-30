@@ -31,6 +31,8 @@ function onInitFs(fs) {
 	// Setup event listeners on the form.
 	var canvas = document.getElementById("page");
 	canvas.addEventListener("touchend", writeFile(), false);
+	getFiles();
+	displayFile();
 }
 //on next button click
 	//display next file
