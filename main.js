@@ -15,7 +15,7 @@ function readFile(fn) {
 	 var drawing = new Image();
 	drawing.src = "filesystem:"+window.location.origin +"/persistent/" + fn; // can also be a remote URL e.g. http://
 	drawing.onload = function() {
-   canvas.drawImage(drawing,0,0);
+   canvas.getContext("2d").drawImage(drawing,0,0);
 };
          canvas.value = this.result;
         // document.body.appendChild(txtArea);
