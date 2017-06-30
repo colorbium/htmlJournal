@@ -32,7 +32,7 @@ function onInitFs(fs) {
 	var canvas = document.getElementById("page");
 	canvas.addEventListener("touchend", function(){writeFile();}, false);
 	getFiles();
-	
+	displayFile();
 }
 //on next button click
 	//display next file
@@ -58,12 +58,13 @@ function getFiles() {
 
   fetchEntries();
 	fileList=entries;
-	displayFile();
+	console.log("filelist set");
 }
 /*end outside code */
 
 //display file
 function displayFile() {
+	console.log("df");
 	var fn = fileList[currimg].name;
   var fs = filesystem;
   fs.root.getFile(fn, {}, function(fileEntry) {
