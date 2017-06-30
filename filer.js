@@ -42,14 +42,15 @@ function onInitFs(fs) {
 /*modified from http://codepen.io/matt-west/pen/CrfKh?editors=1010 */
 //get files
 function getFiles() {
-  var dirReader = filesystem.root.createReader();
+   var dirReader = filesystem.root.createReader();
+  var entries = [];
 
   var fetchEntries = function() {
     dirReader.readEntries(function(results) {
       if (!results.length) {
-	      displayFile();
+     
       } else {
-        fileList = fileList.concat(results);
+        entries = entries.concat(results);
         fetchEntries();
       }
     }, error('4'));
