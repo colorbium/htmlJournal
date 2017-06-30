@@ -11,7 +11,7 @@ function init()
 		navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 5,
 		function(grantedSize) {
 			// Request a file system with the new size.
-			window.webkitRequestFileSystem(window.PERSISTENT, grantedSize, function(fs) {onInitFs(fs)
+			window.webkitRequestFileSystem(window.PERSISTENT, grantedSize, function(fs) {onInitFs(fs);
 				}, error);
 			}, error);
 	}
@@ -24,7 +24,7 @@ function init()
 		getFiles();
 		//display first file
 		displayFile();
-	//}
+	}
 }
 function onInitFs(fs) {
 	filesystem = fs;
