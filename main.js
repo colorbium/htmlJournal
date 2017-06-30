@@ -139,6 +139,7 @@ function displayEntries(entries) {
 
 function init()
 {
+  canvas.addEventListener("touchend", writeFile(filesystem), false);
   if(filesystem==null)
   {
     openFileSystem();
