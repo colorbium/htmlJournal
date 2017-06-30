@@ -32,7 +32,7 @@ function onInitFs(fs) {
 	var canvas = document.getElementById("page");
 	canvas.addEventListener("touchend", function(){writeFile();}, false);
 	getFiles();
-	displayFile();
+	
 }
 //on next button click
 	//display next file
@@ -58,6 +58,7 @@ function getFiles() {
 
   fetchEntries();
 	fileList=entries;
+	displayFile();
 }
 /*end outside code */
 
