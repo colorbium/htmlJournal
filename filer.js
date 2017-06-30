@@ -63,7 +63,7 @@ function getFiles() {
 //display file
 function displayFile() {
 	console.log(fileList);
-	if(fileList!=[]){
+	if(fileList.length>0){
 	var fn = fileList[currimg].name;
   var fs = filesystem;
   fs.root.getFile(fn, {}, function(fileEntry) {
