@@ -30,7 +30,7 @@ function onInitFs(fs) {
 	filesystem = fs;
 	// Setup event listeners on the form.
 	var canvas = document.getElementById("page");
-	canvas.addEventListener("touchend", writeFile(), false);
+	canvas.addEventListener("touchend", function(){writeFile();}, false);
 	getFiles();
 	displayFile();
 }
