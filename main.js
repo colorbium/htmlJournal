@@ -139,6 +139,8 @@ function displayEntries(entries) {
 
 function init()
 {
+  var canvas = document.getElementById("page");
+
   canvas.addEventListener("touchend", writeFile(filesystem), false);
   if(filesystem==null)
   {
