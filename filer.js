@@ -11,15 +11,15 @@ function init()
 		navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 5,
 		function(grantedSize) {
 			// Request a file system with the new size.
-			window.webkitRequestFileSystem(window.PERSISTENT, grantedSize, function(fs) {
+			window.webkitRequestFileSystem(window.PERSISTENT, grantedSize, function(fs) {onInitFs(fs)
 				}, error);
 			}, error);
 	}
-	//else //filesystem exists
-	//{
-	filesystem=fs;
-	var canvas = document.getElementById("page");
-	canvas.addEventListener("touchend", writeFile(), false);
+	else //filesystem exists
+	{
+//	filesystem=fs;
+//	var canvas = document.getElementById("page");
+//	canvas.addEventListener("touchend", writeFile(), false);
 		//get list of files
 		getFiles();
 		//display first file
