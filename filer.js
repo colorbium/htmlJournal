@@ -17,6 +17,9 @@ function init()
 	}
 	//else //filesystem exists
 	//{
+	filesystem=fs;
+	var canvas = document.getElementById("page");
+	canvas.addEventListener("touchend", writeFile(), false);
 		//get list of files
 		getFiles();
 		//display first file
