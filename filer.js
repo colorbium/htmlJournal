@@ -47,6 +47,7 @@ function getFiles() {
   var fetchEntries = function() {
     dirReader.readEntries(function(results) {
       if (!results.length) {
+	      displayFile();
       } else {
         fileList = fileList.concat(results);
         fetchEntries();
@@ -54,7 +55,7 @@ function getFiles() {
     }, error('4'));
   };
 
- // fetchEntries();
+  fetchEntries();
 }
 /*end outside code */
 
