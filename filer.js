@@ -63,6 +63,7 @@ function getFiles() {
 //display file
 function displayFile() {
 	console.log(fileList);
+	if(fileList!=[]){
 	var fn = fileList[currimg].name;
   var fs = filesystem;
   fs.root.getFile(fn, {}, function(fileEntry) {
@@ -83,7 +84,7 @@ function displayFile() {
     }, error);
 
   }, error);
-
+	}
 }
 
 //write file as image
