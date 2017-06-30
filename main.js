@@ -12,6 +12,11 @@ function readFile(fn) {
        reader.onloadend = function(e) {
          //var txtArea = document.createElement('textarea');
          var canvas = document.getElementById("page");
+	 var drawing = new Image();
+	drawing.src = this.result; // can also be a remote URL e.g. http://
+	drawing.onload = function() {
+   canvas.drawImage(drawing,0,0);
+};
          canvas.value = this.result;
         // document.body.appendChild(txtArea);
        };
