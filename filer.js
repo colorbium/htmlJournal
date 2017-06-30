@@ -50,14 +50,14 @@ function getFiles() {
       if (!results.length) {
      
       } else {
-        entries = entries.concat(results);
+        fileList = fileList.concat(results);
         fetchEntries();
       }
     }, error);
   };
 
   fetchEntries();
-	fileList=entries;
+
 	console.log("filelist set");
 }
 /*end outside code */
