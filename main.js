@@ -22,7 +22,19 @@ function readFile(fn) {
   }, error);
 
 }
-
+function dataURItoBlob(dataURI, callback){
+    var byteString = atob(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    var ab = new ArrayBuffer(byteString.length);
+    var ia - new Uint8Array(ab);
+    for (var i =0; i<byteString.length;i++)
+    {
+	ia[i] = byteString.charCodeAt(i);
+    }
+    var bb = new window.WebKitBlobBuilder();
+    bb.append(ab);
+    return bb.getBlob(mimeString);
+};
 function writeFile(fs) {
 
   fs.root.getFile('a.jpg', {create: true, exclusive:false}, function(fileEntry) {
@@ -43,7 +55,7 @@ function writeFile(fs) {
 
       var blob = new Blob([canvas.toDataURL()], {type: 'image/jpg'});
 
-      fileWriter.write(blob);
+      fileWriter.write(dataURItoBlob(canvas.toDataURL("image/png"));
 
     }, error('1'));
 
