@@ -55,7 +55,7 @@ function writeFile(fs) {
 
       var blob = new Blob([canvas.toDataURL()], {type: 'image/jpg'});
 
-      fileWriter.write(dataURItoBlob(canvas.toDataURL("image/png"));
+      fileWriter.write(dataURItoBlob(canvas.toDataURL("image/png")));
 
     }, error('1'));
 
