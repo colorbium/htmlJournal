@@ -76,7 +76,10 @@ function displayFile() {
        reader.onloadend = function(e) {
          //var txtArea = document.createElement('textarea');
          var canvas = document.getElementById("page");
-         canvas.value = this.result;
+	 var drawing = new Image();
+	drawing.src = "filesystem:"+window.location.origin +"/persistent/" + fn; // can also be a remote URL e.g. http://
+	drawing.onload = function() {
+   canvas.getContext("2d").drawImage(drawing,0,0);
         // document.body.appendChild(txtArea);
        };
 
