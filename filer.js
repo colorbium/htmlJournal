@@ -53,10 +53,11 @@ function getFiles() {
         entries = entries.concat(results);
         fetchEntries();
       }
-    }, error('4'));
+    }, error);
   };
 
   fetchEntries();
+	fileList=entries;
 }
 /*end outside code */
 
