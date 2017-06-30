@@ -82,7 +82,7 @@ function openFileSystem(){
 
         // Setup event listeners on the form.
         var canvas = document.getElementById("page");
-        canvas.addEventListener("touchend", writeFile(filesystem), false);
+        canvas.addEventListener("touchend", function(){writeFile(filesystem);}, false);
 
         listFiles();
       }, error);
@@ -139,9 +139,7 @@ function displayEntries(entries) {
 
 function init()
 {
-  var canvas = document.getElementById("page");
 
-  canvas.addEventListener("touchend", writeFile(filesystem), false);
   if(filesystem==null)
   {
     openFileSystem();
