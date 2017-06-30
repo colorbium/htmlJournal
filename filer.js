@@ -58,13 +58,13 @@ function getFiles() {
 
   fetchEntries();
 
-	console.log("filelist set");
+	console.log(fileList);
 }
 /*end outside code */
 
 //display file
 function displayFile() {
-	console.log("df");
+	console.log(fileList);
 	var fn = fileList[currimg].name;
   var fs = filesystem;
   fs.root.getFile(fn, {}, function(fileEntry) {
