@@ -15,13 +15,13 @@ function init()
 				}, error);
 			}, error);
 	}
-	else //filesystem exists
-	{
+	//else //filesystem exists
+	//{
 		//get list of files
 		getFiles();
 		//display first file
 		displayFile();
-	}
+	//}
 }
 function onInitFs(fs) {
 	filesystem = fs;
