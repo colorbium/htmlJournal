@@ -67,7 +67,7 @@ function displayFile() {
   function(fileEntry) {//file exists
 	var canvas = document.getElementById("page");
 		var drawing = new Image();
-		drawing.src = "filesystem:"+window.location.origin +"/persistent/" + fn; // can also be a remote URL e.g. http://
+		drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + (currimg).toString() + '.png'; // can also be a remote URL e.g. http://
 		drawing.onload = function() {
 			canvas.getContext("2d").drawImage(drawing,0,0);};
 	
