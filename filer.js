@@ -37,16 +37,17 @@ function onInitFs(fs) {
 //on next button click
 	//display next file
 function goNext(){
-	var fexists = false;
-	filesystem.root.getFile('page' + (currimg+1).toString() + '.png', {create: false}, 
-  function(fileEntry) {fexists = true;}, 
-  function(){fexists= false;});
 	currimg=currimg+1;
+	//check file exists
+	filesystem.root.getFile('page' + (currimg).toString() + '.png', {create: false}, 
+  function(fileEntry) {//file exists
+		displayFile();}, 
+  function(){//doesn't exist
+	var canvas = document.getElementById("page");canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);writeFile();displayFile();
+	});
 	
-	if(fexists){
-		displayFile();
-	}
-	else{var canvas = document.getElementById("page");canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);writeFile();displayFile();}
+	
+
 }
 //on prev button click
 	//display previous file
@@ -63,15 +64,16 @@ function goPrev(){
 function displayFile() {
 	var fexists = false;
 	filesystem.root.getFile('page' + currimg.toString() + '.png', {create: false}, 
-  function(fileEntry) {fexists = true;}, 
-  function(){fexists= false;});
-	if(fexists){
-		var canvas = document.getElementById("page");
+  function(fileEntry) {//file exists
+	var canvas = document.getElementById("page");
 		var drawing = new Image();
 		drawing.src = "filesystem:"+window.location.origin +"/persistent/" + fn; // can also be a remote URL e.g. http://
 		drawing.onload = function() {
 			canvas.getContext("2d").drawImage(drawing,0,0);};
-			}
+	
+	}, 
+  function(){writeFile();});
+
 }
 
 //write file as image
