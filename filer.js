@@ -61,9 +61,10 @@ function goPrev(){
 
 //display file
 function displayFile() {
-	var fexists = filesystem.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, 
-		function(fileEntry) {return true;}, 
-		function(){return false;});
+	var fexists = false;
+	filesystem.root.getFile('page' + (currimg+1).toString() + '.png', {create: false, exclusive:false}, 
+  function(fileEntry) {fexists = true;}, 
+  function(){fexists= false;});
 	if(fexists){
 		var canvas = document.getElementById("page");
 		var drawing = new Image();
