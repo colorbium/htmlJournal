@@ -35,6 +35,7 @@ function onInitFs(fs) {
 	canvas.addEventListener("touchend", function(){writeFile();}, false);
 	prev.addEventListener("click", function(){goPrev();}, false);
 	next.addEventListener("click", function(){goNext();}, false);
+	newFile();
 	getFiles();
 }
 //on next button click
@@ -110,7 +111,7 @@ function newFile() {
   var fs = filesystem;
   var nfile = fs.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, function(fileEntry) {
 	}, error('2'));
-fileList = fileList.concat(nfile);
+getFiles();
 }
 //write file as image
 //additional function to create directory and save as layers 
