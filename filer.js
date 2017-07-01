@@ -38,12 +38,13 @@ function onInitFs(fs) {
 	//display next file
 function goNext(){
 	currimg=currimg+1;
+	var canvas = document.getElementById("page");canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 	//check file exists
 	filesystem.root.getFile('page' + (currimg).toString() + '.png', {create: false}, 
   function(fileEntry) {//file exists
 		displayFile();}, 
   function(){//doesn't exist
-	var canvas = document.getElementById("page");canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);writeFile();displayFile();
+	writeFile();displayFile();
 	});
 	
 	
