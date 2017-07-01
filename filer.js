@@ -44,7 +44,7 @@ function goNext(){
 	if(currimg+1<fileList.length){
 		displayFile();
 	}
-	else{writeFile();displayFile();}
+	else{newFile();displayFile();}
 }
 //on prev button click
 	//display previous file
@@ -106,7 +106,11 @@ function displayFile() {
   }, error);
 	}
 }
-
+function newFile() {
+  var fs = filesystem;
+  fs.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, function(fileEntry) {
+	}, error('2'));
+}
 //write file as image
 //additional function to create directory and save as layers 
 //for layer functionality
