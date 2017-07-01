@@ -108,9 +108,10 @@ function displayFile() {
 }
 function newFile() {
   var fs = filesystem;
-  fs.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, function(fileEntry) {
+  var nfile = fs.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, function(fileEntry) {
 	}, error('2'));
 }
+fileList = fileList.concat(nfile);
 //write file as image
 //additional function to create directory and save as layers 
 //for layer functionality
