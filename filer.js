@@ -1,5 +1,4 @@
 var filesystem = null;
-var fileList = [];
 var currimg = 0;
 //on init
 function init()
@@ -20,8 +19,6 @@ function init()
 //	filesystem=fs;
 //	var canvas = document.getElementById("page");
 //	canvas.addEventListener("touchend", writeFile(), false);
-		//get list of files
-		getFiles();
 		//display first file
 		displayFile();
 	}
@@ -35,13 +32,17 @@ function onInitFs(fs) {
 	canvas.addEventListener("touchend", function(){writeFile();}, false);
 	prev.addEventListener("click", function(){goPrev();}, false);
 	next.addEventListener("click", function(){goNext();}, false);
-	getFiles();
+	displayFile();
 }
 //on next button click
 	//display next file
 function goNext(){
+	var fexists = fs.root.getFile('page' + (currimg+1).toString() + '.png', {create: true, exclusive:false}, 
+  function(fileEntry) {return true;}, 
+  function(){return false;});
 	currimg=currimg+1;
-	if(currimg+1<fileList.length){
+	
+	if(fexists){
 		displayFile();
 	}
 	else{var canvas = document.getElementById("page");canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);writeFile();displayFile();}
@@ -55,56 +56,20 @@ function goPrev(){
 		displayFile();
 	}
 }
-/*modified from http://codepen.io/matt-west/pen/CrfKh?editors=1010 */
-//get files
-function getFiles() {
-   var dirReader = filesystem.root.createReader();
-  var entries = [];
 
-  var fetchEntries = function() {
-    dirReader.readEntries(function(results) {
-      if (!results.length) {
-     
-      } else {
-        fileList = fileList.concat(results);
-        fetchEntries();
-      }
-    }, error);
-  displayFile()};
-
-  fetchEntries();
-
-}
-/*end outside code */
 
 //display file
 function displayFile() {
-	console.log(fileList);
-	if(fileList.length>0){
-	var fn = fileList[currimg].name;
-  var fs = filesystem;
-  fs.root.getFile(fn, {}, function(fileEntry) {
-
-    // Get a File object representing the file,
-    // then use FileReader to read its contents.com
-    fileEntry.file(function(file) {
-       var reader = new FileReader();
-
-       reader.onloadend = function(e) {
-         //var txtArea = document.createElement('textarea');
-         var canvas = document.getElementById("page");
-	 var drawing = new Image();
-	drawing.src = "filesystem:"+window.location.origin +"/persistent/" + fn; // can also be a remote URL e.g. http://
-	drawing.onload = function() {
-   canvas.getContext("2d").drawImage(drawing,0,0);};
-        // document.body.appendChild(txtArea);
-       };
-
-       reader.readAsDataURL(file);
-    }, error);
-
-  }, error);
-	}
+	var fexists = fs.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, 
+		function(fileEntry) {return true;}, 
+		function(){return false;});
+	if(fexists){
+		var canvas = document.getElementById("page");
+		var drawing = new Image();
+		drawing.src = "filesystem:"+window.location.origin +"/persistent/" + fn; // can also be a remote URL e.g. http://
+		drawing.onload = function() {
+			canvas.getContext("2d").drawImage(drawing,0,0);};
+			}
 }
 
 //write file as image
@@ -141,7 +106,6 @@ function error(e) {
 
   console.log('Error: ' + e);
 }
-
 
 //helper to make blob
 function dataURItoBlob(dataURI, callback){
