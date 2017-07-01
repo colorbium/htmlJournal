@@ -44,7 +44,7 @@ function goNext(){
 	if(currimg+1<fileList.length){
 		displayFile();
 	}
-	else{writeFile();}
+	else{writeFile();displayFile();}
 }
 //on prev button click
 	//display previous file
