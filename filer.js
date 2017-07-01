@@ -35,7 +35,6 @@ function onInitFs(fs) {
 	canvas.addEventListener("touchend", function(){writeFile();}, false);
 	prev.addEventListener("click", function(){goPrev();}, false);
 	next.addEventListener("click", function(){goNext();}, false);
-	newFile();
 	getFiles();
 }
 //on next button click
@@ -45,7 +44,7 @@ function goNext(){
 	if(currimg+1<fileList.length){
 		displayFile();
 	}
-	else{newFile();displayFile();}
+	else{var canvas = document.getElementById("page");canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);writeFile();displayFile();}
 }
 //on prev button click
 	//display previous file
@@ -107,12 +106,7 @@ function displayFile() {
   }, error);
 	}
 }
-function newFile() {
-  var fs = filesystem;
-  var nfile = fs.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, function(fileEntry) {
-	}, error('2'));
-getFiles();
-}
+
 //write file as image
 //additional function to create directory and save as layers 
 //for layer functionality
