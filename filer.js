@@ -31,7 +31,7 @@ function onInitFs(fs) {
 	// Setup event listeners on the form.
 	var canvas = document.getElementById("page");
 	var prev = document.getElementById("prev");
-	var next = document.getElementbyId("next");
+	var next = document.getElementById("next");
 	canvas.addEventListener("touchend", function(){writeFile();}, false);
 	prev.addEventListener("click", function(){goPrev();}, false);
 	next.addEventListener("click", function(){goNext();}, false);
