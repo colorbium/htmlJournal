@@ -38,7 +38,7 @@ function onInitFs(fs) {
 	//display next file
 function goNext(){
 	var fexists = false;
-	filesystem.root.getFile('page' + (currimg+1).toString() + '.png', {create: false, exclusive:false}, 
+	filesystem.root.getFile('page' + (currimg+1).toString() + '.png', {create: false}, 
   function(fileEntry) {fexists = true;}, 
   function(){fexists= false;});
 	currimg=currimg+1;
@@ -62,7 +62,7 @@ function goPrev(){
 //display file
 function displayFile() {
 	var fexists = false;
-	filesystem.root.getFile('page' + (currimg+1).toString() + '.png', {create: false, exclusive:false}, 
+	filesystem.root.getFile('page' + currimg.toString() + '.png', {create: false}, 
   function(fileEntry) {fexists = true;}, 
   function(){fexists= false;});
 	if(fexists){
