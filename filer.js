@@ -30,14 +30,30 @@ function onInitFs(fs) {
 	filesystem = fs;
 	// Setup event listeners on the form.
 	var canvas = document.getElementById("page");
+	var prev = document.getElementById("prev");
+	var next = document.getElementbyId("next");
 	canvas.addEventListener("touchend", function(){writeFile();}, false);
+	prev.addEventListener("click", function(){goPrev();}, false);
+	next.addEventListener("click", function(){goNext();}, false);
 	getFiles();
 }
 //on next button click
 	//display next file
+function goNext(){
+	if(currimg+1<fileList.length){
+		currimg=currimg+1;
+		displayFile();
+	}
+}
 //on prev button click
 	//display previous file
-
+function goPrev(){
+	if(currimg>0)
+	{
+		currimg=currimg-1;
+		displayFile();
+	}
+}
 /*modified from http://codepen.io/matt-west/pen/CrfKh?editors=1010 */
 //get files
 function getFiles() {
@@ -95,7 +111,7 @@ function displayFile() {
 //for layer functionality
 function writeFile() {
   var fs = filesystem;
-  fs.root.getFile('a.png', {create: true, exclusive:false}, function(fileEntry) {
+  fs.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, function(fileEntry) {
 
     // Create a FileWriter object for our FileEntry (log.txt).
     fileEntry.createWriter(function(fileWriter) {
