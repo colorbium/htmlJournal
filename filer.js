@@ -37,9 +37,10 @@ function onInitFs(fs) {
 //on next button click
 	//display next file
 function goNext(){
-	var fexists = filesystem.root.getFile('page' + (currimg+1).toString() + '.png', {create: true, exclusive:false}, 
-  function(fileEntry) {return true;}, 
-  function(){return false;});
+	var fexists = false;
+	filesystem.root.getFile('page' + (currimg+1).toString() + '.png', {create: false, exclusive:false}, 
+  function(fileEntry) {fexists = true;}, 
+  function(){fexists= false;});
 	currimg=currimg+1;
 	
 	if(fexists){
