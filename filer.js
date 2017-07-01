@@ -40,10 +40,11 @@ function onInitFs(fs) {
 //on next button click
 	//display next file
 function goNext(){
+	currimg=currimg+1;
 	if(currimg+1<fileList.length){
-		currimg=currimg+1;
 		displayFile();
 	}
+	else{writeFile();}
 }
 //on prev button click
 	//display previous file
