@@ -54,6 +54,7 @@ function goNext(){
 function goPrev(){
 	if(currimg>0)
 	{
+		var canvas = document.getElementById("page");canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 		currimg=currimg-1;
 		displayFile();
 	}
