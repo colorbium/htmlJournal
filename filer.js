@@ -7,10 +7,10 @@ function init()
 	if(filesystem==null)
 	{
 		//request
-		navigator.webkitPersistentStorage.requestQuota(1024 * 1024 * 5,
+		navigator.webkitTemporaryStorage.requestQuota(1024 * 1024 * 5,
 		function(grantedSize) {
 			// Request a file system with the new size.
-			window.webkitRequestFileSystem(window.PERSISTENT, grantedSize, function(fs) {onInitFs(fs);
+			window.webkitRequestFileSystem(window.TEMPORARY, grantedSize, function(fs) {onInitFs(fs);
 				}, error);
 			}, error);
 	}

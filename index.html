@@ -1,15 +1,51 @@
 <html>
   <head>
-    <title>Journal WIP</title>
 
+    <title>Journal WIP</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+<script src="./node_modules/sortablejs/Sortable.js"></script>
  <script type="text/javascript" src="filer.js"></script>
     <script type="text/javascript" src="drawtools.js"></script>
   </head>
   <body onload="init(); freeDraw()">
-    <canvas id="page" width="100%" height="100%"></canvas>
+    <canvas id="page" width="200px;" height="200px;"></canvas>
+	<div id="layers">
+		<ul  id="layerlist">
+		<li id="canvas0L">Drag This<i class="js-remove"> X</i></li>
+		<li id="canvas1L">This Too<i class="js-remove"> X</i></li>
+		<li id="canvas2L" >And This<i class="js-remove"> X</i></li>
+		</ul>
+		<button id="newlayer">Add</button>
+	</div>
+	<script>
+		function addLayer(){
+			var list = document.getElementById('layerlist');
+			var li = document.createElement('li');
+			li.id="canvas2";
+			list.appendChild(li);
+			li.innerHTML="Layer 2";
+			var i = document.createElement('i');
+			i.className="js-remove";
+			i.innerHTML="X";
+			li.appendChild(i);
+		}
+	var nl_btn = document.getElementById('newlayer');
+	nl_btn.addEventListener("click", addLayer, false);
+	var list = document.getElementById('layerlist');
+	var sortable = Sortable.create(list,{
+		filter: '.js-remove',
+		onFilter: function(evt){
+			var el = sortable.closest(evt.item);
+			el && el.parentNode.removeChild(el);
+		},
+		onMove: function(evt){
+			//move canvas
+		}	
+		});
+	</script>
     <div id="controls">
-      <button id="prev"></button>
-      <button id="next"></button>
+      <button id="prev">Previous</button>
+      <button id="next">Next</button>
     </div>
   </body>
 </html>
