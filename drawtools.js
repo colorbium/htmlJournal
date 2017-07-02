@@ -1,3 +1,15 @@
+function setRed()
+{
+	var ctx = document.getElementById("page");
+	ctx.strokeStyle="#FF0000";
+}
+function setRed()
+{
+	var ctx = document.getElementById("page");
+	ctx.strokeStyle="#FFFFFF";
+}
+
+
 function freeDraw()
 {
   var canvas = document.getElementById("page");
