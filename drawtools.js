@@ -4,6 +4,7 @@ function setRed()
 	ctx.strokeStyle="#FF0000";
 }
 function setBlack()
+{
 	var ctx = document.getElementById("page");
 	ctx.strokeStyle="#FFFFFF";
 }
