@@ -1,12 +1,12 @@
 function setRed()
 {
-	var ctx = document.getElementById("page");
+	var ctx = document.getElementById("page").getContext("2d");
 	ctx.strokeStyle="#FF0000";
 }
 function setBlack()
 {
-	var ctx = document.getElementById("page");
-	ctx.strokeStyle="#FFFFFF";
+	var ctx = document.getElementById("page").getContext("2d");
+	ctx.strokeStyle="#000000";
 }
 
 
