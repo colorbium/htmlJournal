@@ -3,8 +3,7 @@ function setRed()
 	var ctx = document.getElementById("page");
 	ctx.strokeStyle="#FF0000";
 }
-function setRed()
-{
+function setBlack()
 	var ctx = document.getElementById("page");
 	ctx.strokeStyle="#FFFFFF";
 }
