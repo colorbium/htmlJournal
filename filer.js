@@ -70,7 +70,7 @@ function displayFile() {
 	
 	//TODO fix
 	//open layers.txt
-	
+	var fs = filesystem;
 	fs.root.getDirectory(currDir, {create:false}, function(dirEntry){
 		fs.root.getFile('page' + currimg.toString() + '/layers.text', {create:false}, 
 			function(fileEntry)
