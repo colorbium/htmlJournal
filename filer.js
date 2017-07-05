@@ -72,8 +72,7 @@ function displayFile() {
 	//open layers.txt
 	
 	fs.root.getDirectory(currDir, {create:false}, function(dirEntry){
-		fs.root.getFile('page' + currimg.toString() + '/layers.text', {create:false}, function(fileEntry)
-		{
+		fs.root.getFile('page' + currimg.toString() + '/layers.text', {create:false}, 
 			function(fileEntry)
 			{//file exists
 				fileEntry.file(function(file){
@@ -99,7 +98,7 @@ function displayFile() {
 				};
 			reader.readAsText(file, "UTF-8");
 			}, error);
-		});//end error callback
+		}, error);//end error callback
 		); //end get file
   }, error); //end get Dir
 }
