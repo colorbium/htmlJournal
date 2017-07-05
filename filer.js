@@ -156,8 +156,9 @@ var fs = filesystem;
 		}); //end get file
   }, error); //end get Dir
 }
-function newLayer(currDir)
+function newLayer()
 {
+	var currDir = "page/" + currimg.toString();
 	var fs = filesystem;
 	//new element in list
 	//new canvas element
