@@ -82,18 +82,24 @@ function displayFile() {
 						//this.results
 						var text = e.target.result;
 						var lines = text.split(/[\r\n]+/g);
-						currLayer = lines.length + 1;
-						//for each line
-						for(i = 0; i<lines.length; i++)
+						if(lines.length==0)
 						{
-							//find canvas
-							var canvas = document.getElementById(lines[i]);
-							//display img
-							var drawing = new Image();
-							drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + currimg.toString()  + "/" + canvas.id + '.png'; // can also be a remote URL e.g. http://
-							drawing.onload = function() {
-							canvas.getContext("2d").drawImage(drawing,0,0);};
-	
+							newLayer();
+						}
+						else
+						{
+							currLayer = lines.length + 1;
+							//for each line
+							for(i = 0; i<lines.length; i++)
+							{
+								//find canvas
+								var canvas = document.getElementById(lines[i]);
+								//display img
+								var drawing = new Image();
+								drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + currimg.toString()  + "/" + canvas.id + '.png'; // can also be a remote URL e.g. http://
+								drawing.onload = function() {
+								canvas.getContext("2d").drawImage(drawing,0,0);};
+						}
 					} 
 				};
 				reader.readAsText(file, "UTF-8");	
@@ -110,7 +116,7 @@ function displayFile() {
 function newFile() {
   var fs = filesystem;
   fs.root.getDirectory('page' + currimg.toString(), {create:true}, function(dirEntry){
-  newLayer('page' + currimg.toString());
+//  newLayer('page' + currimg.toString());
   }, error);
 }function addLayertoList(currLayer){
 			var list = document.getElementById('layerlist');
