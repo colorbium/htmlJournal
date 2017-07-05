@@ -95,7 +95,7 @@ function displayFile() {
 	
 					} 
 				};
-			};
+			});
 			reader.readAsText(file, "UTF-8");
 			}, error);
 		}, error);//end error callback
