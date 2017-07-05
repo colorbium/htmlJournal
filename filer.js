@@ -133,7 +133,7 @@ var fs = filesystem;
 		function(fileEntry)
 		{//file exists
 			fileEntry.createWriter(function(fileWriter){
-			var list = document.getElementById("layers".getElementsByTagName("li");
+			var list = document.getElementById("layers").getElementsByTagName("li");
 				for(i = list.length-1; i=>0, i--)
 				{
 					var num = list[i].id;
