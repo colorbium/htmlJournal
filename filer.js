@@ -210,7 +210,7 @@ function newLayer(currDir)
   }
 newc.style.zIndex = z+1;
 var cdiv = document.getElementById("page");
-cdiv.appendChild(cdiv);
+cdiv.appendChild(newc);
 }
 function error(e) {
 
