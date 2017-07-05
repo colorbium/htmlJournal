@@ -73,7 +73,7 @@ function displayFile() {
 	var fs = filesystem;
 	var currDir = "page" + currimg.toString();
 	fs.root.getDirectory(currDir, {create:false}, function(dirEntry){
-		fs.root.getFile('page' + currimg.toString() + '/layers.text', {create:false}, 
+		fs.root.getFile('page' + currimg.toString() + '/layers.txt', {create:false}, 
 			function(fileEntry)
 			{//file exists
 				fileEntry.file(function(file){
@@ -132,7 +132,7 @@ function newFile() {
 function updateLog(){
 var fs = filesystem;
 	fs.root.getDirectory(currDir, {create:false}, function(dirEntry){
-		fs.root.getFile('page' + currimg.toString() + '/layers.text', {create:true,exclusive:true}, function(fileEntry)
+		fs.root.getFile('page' + currimg.toString() + '/layers.txt', {create:true,exclusive:true}, function(fileEntry)
 		{
 				fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
@@ -166,7 +166,7 @@ function newLayer()
 	//update layers.txt
 	var currLayer=1;
 	fs.root.getDirectory(currDir, {create:false}, function(dirEntry){
-		fs.root.getFile('page' + currimg.toString() + '/layers.text', {create:false},
+		fs.root.getFile('page' + currimg.toString() + '/layers.txt', {create:false},
 		function(fileEntry)
 		{//file exists
 			fileEntry.file(function(file){
@@ -180,6 +180,7 @@ function newLayer()
 					fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
 						var blob = new Blob(['canvas'+currLayer.toString()], {type:'text/plain'});
+						fileWriter.write(blob);
 					},error);
 				};
 			reader.readAsText(file, "UTF-8");
