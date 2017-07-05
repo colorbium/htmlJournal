@@ -175,7 +175,8 @@ function newLayer()
 					//this.results
 					var text = e.target.result;
 					var lines = text.split(/[\r\n]+/g);
-					currLayer = lines.length + 1;
+					currLayer = lines.length + 1; 
+					addLayertoList(currLayer);
 					fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
 						var blob = new Blob(['canvas'+currLayer.toString()], {type:'text/plain'});
@@ -186,7 +187,7 @@ function newLayer()
 		},error);//end get file
   }, error); //end get Dir
   //new element in list
-  addLayertoList(currLayer);
+ 
 	//new canvas element
   var newc = document.createElement("canvas");
   newc.id = "canvas" + currLayer.toString();
