@@ -129,7 +129,7 @@ var fs = filesystem;
 						fileWriter.seek(fileWriter.length);
 						var blob = new Blob(['Layer1'], {type:'text/plain'});
 					},error);
-			}//end success callback
+			},//end success callback
 		function(fileEntry)
 		{//file exists
 			fileEntry.createWriter(function(fileWriter){
