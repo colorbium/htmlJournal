@@ -165,13 +165,7 @@ function newLayer(currDir)
 	//update layers.txt
 	var currLayer=1;
 	fs.root.getDirectory(currDir, {create:false}, function(dirEntry){
-		fs.root.getFile('page' + currimg.toString() + '/layers.text', {create:true,exclusive:true}, function(fileEntry)
-		{
-				fileEntry.createWriter(function(fileWriter){
-						fileWriter.seek(fileWriter.length);
-						var blob = new Blob(['canvas'+currLayer.toString()], {type:'text/plain'});
-					},error);
-			},//end success callback
+		fs.root.getFile('page' + currimg.toString() + '/layers.text', {create:false},
 		function(fileEntry)
 		{//file exists
 			fileEntry.file(function(file){
@@ -188,7 +182,7 @@ function newLayer(currDir)
 				};
 			reader.readAsText(file, "UTF-8");
 			}, error);
-		});//end get file
+		},error);//end get file
   }, error); //end get Dir
   //new element in list
   addLayertoList(currLayer);
