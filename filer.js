@@ -99,7 +99,8 @@ function displayFile() {
 			});
 			reader.readAsText(file, "UTF-8");
 			}, error);
-		}, error);//end get Dir
+		}, 
+			    function(dirEntry){newFile();});//end get Dir
 }
 
 //write file as image
