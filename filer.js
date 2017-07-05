@@ -96,8 +96,9 @@ function displayFile() {
 	
 					} 
 				};
+				reader.readAsText(file, "UTF-8");	
 			});
-			reader.readAsText(file, "UTF-8");
+			
 			}, error);
 		}, 
 			    function(dirEntry){newFile();});//end get Dir
