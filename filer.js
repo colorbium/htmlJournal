@@ -147,7 +147,7 @@ var fs = filesystem;
 				{
 					var num = list[i].id;
 					var canvas = document.getElementById("canvas" + num.toString());
-					canvas.currentStyle["zIndex"] = i;
+					canvas.style.zIndex= i;
 				
 						var blob = new Blob([canvas.innerHTML], {type:'text/plain'});
 					}
@@ -195,20 +195,20 @@ function newLayer(currDir)
   var not = document.getElementsByClassName("not");
   var i;
   for (i=0; i <not.length; i++){
-	if(slt[i].currentStyle["zIndex"] > z)
+	if(slt[i].style.zIndex> z)
 		{
-			z = slt[i].currentStyle["zIndex"];
+			z = slt[i].style.zIndex;
 		}
   }
   var slt = document.getElementsByClassName("selected");
   for (i=0; i <slt.length; i++){
 	slt[i].className = "not";
-	if(slt[i].currentStyle["zIndex"] > z)
+	if(slt[i].style.zIndex > z)
 	{
-		z = slt[i].currentStyle["zIndex"];
+		z = slt[i].style.zIndex;
 	}
   }
-newc.currentStyle["zIndex"] = z+1;
+newc.style.zIndex = z+1;
 var cdiv = document.getElementById("page");
 cdiv.appendChild(cdiv);
 }
