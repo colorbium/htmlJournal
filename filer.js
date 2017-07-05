@@ -105,7 +105,7 @@ function displayFile() {
 				reader.readAsText(file, "UTF-8");	
 			});
 			
-			}, error);
+			}, function(fileEntry){newLayer();});
 		}, 
 			    function(dirEntry){newFile();});//end get Dir
 }
@@ -118,8 +118,8 @@ function newFile() {
   fs.root.getDirectory('page' + currimg.toString(), {create:true}, function(dirEntry){
 //  newLayer('page' + currimg.toString());
   }, error);
-  newLayer();
-}function addLayertoList(currLayer){
+}
+function addLayertoList(currLayer){
 			var list = document.getElementById('layerlist');
 			var li = document.createElement('li');
 			li.id=currLayer.toString();
