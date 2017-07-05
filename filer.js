@@ -196,9 +196,9 @@ function newLayer()
   var not = document.getElementsByClassName("not");
   var i;
   for (i=0; i <not.length; i++){
-	if(slt[i].style.zIndex> z)
+	if(not[i].style.zIndex> z)
 		{
-			z = slt[i].style.zIndex;
+			z = not[i].style.zIndex;
 		}
   }
   var slt = document.getElementsByClassName("selected");
