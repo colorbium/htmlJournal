@@ -134,7 +134,7 @@ var fs = filesystem;
 		{//file exists
 			fileEntry.createWriter(function(fileWriter){
 			var list = document.getElementById("layers").getElementsByTagName("li");
-				for(i = list.length-1; i=>0, i--)
+				for(i = list.length-1; i=>0; i--)
 				{
 					var num = list[i].id;
 					var canvas = document.getElementById("canvas" + num.toString());
@@ -144,8 +144,7 @@ var fs = filesystem;
 					}
 					},error);
 
-		});//end error callback
-		); //end get file
+		}); //end get file
   }, error); //end get Dir
 }
 function newLayer(currDir)
@@ -163,7 +162,7 @@ function newLayer(currDir)
 						fileWriter.seek(fileWriter.length);
 						var blob = new Blob(['canvas'+currLayer.toString()], {type:'text/plain'});
 					},error);
-			}//end success callback
+			},//end success callback
 		function(fileEntry)
 		{//file exists
 			fileEntry.file(function(file){
@@ -180,8 +179,7 @@ function newLayer(currDir)
 				};
 			reader.readAsText(file, "UTF-8");
 			}, error);
-		});//end error callback
-		); //end get file
+		});//end get file
   }, error); //end get Dir
   //new element in list
   addLayertoList(currLayer);
