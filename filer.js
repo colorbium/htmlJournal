@@ -158,7 +158,7 @@ var fs = filesystem;
 }
 function newLayer()
 {
-	var currDir = "page/" + currimg.toString();
+	var currDir = "page" + currimg.toString();
 	var fs = filesystem;
 	//new element in list
 	//new canvas element
