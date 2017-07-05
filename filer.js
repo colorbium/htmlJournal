@@ -93,9 +93,9 @@ function displayFile() {
 							drawing.onload = function() {
 							canvas.getContext("2d").drawImage(drawing,0,0);};
 	
-	}, 
-						}
+					} 
 				};
+			};
 			reader.readAsText(file, "UTF-8");
 			}, error);
 		}, error);//end error callback
