@@ -127,7 +127,7 @@ var fs = filesystem;
 		{
 				fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
-						var blob = new Blob(['Layer1'], type:'text/plain');
+						var blob = new Blob(['Layer1'], {type:'text/plain'});
 					},error);
 			}//end success callback
 		function(fileEntry)
@@ -140,7 +140,7 @@ var fs = filesystem;
 					var canvas = document.getElementById("canvas" + num.toString());
 					canvas.currentStyle["zIndex"] = i;
 				
-						var blob = new Blob([canvas.innerHTML], type:'text/plain');
+						var blob = new Blob([canvas.innerHTML], {type:'text/plain'});
 					}
 					},error);
 
@@ -161,7 +161,7 @@ function newLayer(currDir)
 		{
 				fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
-						var blob = new Blob(['canvas'+currLayer.toString()], type:'text/plain');
+						var blob = new Blob(['canvas'+currLayer.toString()], {type:'text/plain'});
 					},error);
 			}//end success callback
 		function(fileEntry)
@@ -175,7 +175,7 @@ function newLayer(currDir)
 					currLayer = lines.length + 1;
 					fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
-						var blob = new Blob(['canvas'+currLayer.toString()], type:'text/plain');
+						var blob = new Blob(['canvas'+currLayer.toString()], {type:'text/plain'});
 					},error);
 				};
 			reader.readAsText(file, "UTF-8");
