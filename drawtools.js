@@ -13,11 +13,11 @@ function setBlack()
 function freeDraw()
 {
   var cdiv = document.getElementById("page");
-  var canvas = document.getElementsByClassName("selected")[0];
   cdiv.addEventListener("touchstart", start, false);
   cdiv.addEventListener("touchmove", move, false);
   function start()
   {
+  var canvas = document.getElementsByClassName("selected")[0];
     area = canvas.getContext("2d");
     var x = event.touches[0].pageX;
 	  var y = event.touches[0].pageY;	
@@ -26,6 +26,7 @@ function freeDraw()
   }
   function move()
   {
+  var canvas = document.getElementsByClassName("selected")[0];
     area = canvas.getContext("2d");
     var x = event.touches[0].pageX;
 	  var y = event.touches[0].pageY;	
