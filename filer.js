@@ -118,6 +118,7 @@ function newFile() {
   fs.root.getDirectory('page' + currimg.toString(), {create:true}, function(dirEntry){
 //  newLayer('page' + currimg.toString());
   }, error);
+  newLayer();
 }function addLayertoList(currLayer){
 			var list = document.getElementById('layerlist');
 			var li = document.createElement('li');
@@ -214,6 +215,7 @@ function newLayer()
 newc.style.zIndex = z+1;
 var cdiv = document.getElementById("page");
 cdiv.appendChild(newc);
+updateLog();
 }
 function error(e) {
 
