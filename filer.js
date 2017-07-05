@@ -90,7 +90,7 @@ function displayFile() {
 							var canvas = document.getElementById(lines[i]);
 							//display img
 							var drawing = new Image();
-							drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + currimg.toString()  + "/" + canvas.innerHTML + '.png'; // can also be a remote URL e.g. http://
+							drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + currimg.toString()  + "/" + canvas.id + '.png'; // can also be a remote URL e.g. http://
 							drawing.onload = function() {
 							canvas.getContext("2d").drawImage(drawing,0,0);};
 	
@@ -219,7 +219,7 @@ function error(e) {
 function writeFile() {
   var fs = filesystem;
 	var canvas = document.getElementsByClassName("selected")[0];
-  fs.root.getFile('page' + currimg.toString()  + "/" + canvas.innerHTML + '.png', {create: true, exclusive:false}, function(fileEntry) {
+  fs.root.getFile('page' + currimg.toString()  + "/" + canvas.id + '.png', {create: true, exclusive:false}, function(fileEntry) {
 
     // Create a FileWriter object for our FileEntry (log.txt).
     fileEntry.createWriter(function(fileWriter) {
