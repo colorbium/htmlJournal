@@ -207,10 +207,10 @@ function newLayer(currDir)
 	{
 		z = slt[i].currentStyle["zIndex"];
 	}
-	newc.currentStyle["zIndex"] = z+1;
-	var cdiv = document.getElementById("page");
-	cdiv.appendChild(cdiv);
   }
+newc.currentStyle["zIndex"] = z+1;
+var cdiv = document.getElementById("page");
+cdiv.appendChild(cdiv);
 }
 function error(e) {
 
