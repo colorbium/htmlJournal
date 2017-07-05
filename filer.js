@@ -99,7 +99,6 @@ function displayFile() {
 			reader.readAsText(file, "UTF-8");
 			}, error);
 		}, error);//end error callback
-		); //end get file
   }, error); //end get Dir
 }
 
