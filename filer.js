@@ -82,7 +82,7 @@ function displayFile() {
 						//this.results
 						var text = e.target.result;
 						var lines = text.split(/[\r\n]+/g);
-						if(lines.length==0)
+						if(lines.length==1 && lines[0]=="")
 						{
 							newLayer();
 						}
