@@ -117,6 +117,11 @@ function newFile() {
   var fs = filesystem;
   fs.root.getDirectory('page' + currimg.toString(), {create:true}, function(dirEntry){
 //  newLayer('page' + currimg.toString());
+fs.root.getFile(currDir+ '/layers.txt', {create:true,exclusive:true}, function(fileEntry)
+		{
+				fileEntry.createWriter(function(fileWriter){
+					},error);
+			},//end success callback
   }, error);
 }
 function addLayertoList(currLayer){
@@ -134,14 +139,7 @@ function updateLog(){
 var fs = filesystem;
 	var currDir ='page' + currimg.toString() 
 	fs.root.getDirectory(currDir, {create:false}, function(dirEntry){
-		fs.root.getFile(currDir+ '/layers.txt', {create:true,exclusive:true}, function(fileEntry)
-		{
-				fileEntry.createWriter(function(fileWriter){
-						fileWriter.seek(fileWriter.length);
-						var blob = new Blob(['Layer1'], {type:'text/plain'});
-					},error);
-			},//end success callback
-		function(fileEntry)
+		fs.root.getFile(currDir+ '/layers.txt', {create:false}, function(fileEntry)
 		{//file exists
 			fileEntry.createWriter(function(fileWriter){
 			var list = document.getElementById("layers").getElementsByTagName("li");
