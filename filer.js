@@ -90,7 +90,7 @@ function displayFile() {
 							var canvas = document.getElementById(lines[i]);
 							//display img
 							var drawing = new Image();
-							drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + (currimg).toString() + '.png'; // can also be a remote URL e.g. http://
+							drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + currimg.toString()  + "/" + canvas.innerHTML + '.png'; // can also be a remote URL e.g. http://
 							drawing.onload = function() {
 							canvas.getContext("2d").drawImage(drawing,0,0);};
 	
@@ -218,7 +218,8 @@ function error(e) {
 }
 function writeFile() {
   var fs = filesystem;
-  fs.root.getFile('page' + currimg.toString() + '.png', {create: true, exclusive:false}, function(fileEntry) {
+	var canvas = document.getElementsByClassName("selected")[0];
+  fs.root.getFile('page' + currimg.toString()  + "/" + canvas.innerHTML + '.png', {create: true, exclusive:false}, function(fileEntry) {
 
     // Create a FileWriter object for our FileEntry (log.txt).
     fileEntry.createWriter(function(fileWriter) {
@@ -233,7 +234,7 @@ function writeFile() {
 
       // Create a new Blob and write it to log.txt.
      // var canvas = document.getElementById("page");
-	  var canvas = document.getElementsByClassName("selected")[0];
+	  
       var blob = new Blob([canvas.toDataURL()], {type: 'image/jpg'});
 
       fileWriter.write(dataURItoBlob(canvas.toDataURL("image/png")));
