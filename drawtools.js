@@ -12,9 +12,10 @@ function setBlack()
 
 function freeDraw()
 {
+  var cdiv = document.getElementById("page");
   var canvas = document.getElementsByClassName("selected")[0];
-  canvas.addEventListener("touchstart", start, false);
-  canvas.addEventListener("touchmove", move, false);
+  cdiv.addEventListener("touchstart", start, false);
+  cdiv.addEventListener("touchmove", move, false);
   function start()
   {
     area = canvas.getContext("2d");
