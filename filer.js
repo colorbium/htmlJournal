@@ -132,8 +132,9 @@ function addLayertoList(currLayer){
 }
 function updateLog(){
 var fs = filesystem;
+	var currDir ='page' + currimg.toString() 
 	fs.root.getDirectory(currDir, {create:false}, function(dirEntry){
-		fs.root.getFile('page' + currimg.toString() + '/layers.txt', {create:true,exclusive:true}, function(fileEntry)
+		fs.root.getFile(currDir+ '/layers.txt', {create:true,exclusive:true}, function(fileEntry)
 		{
 				fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
