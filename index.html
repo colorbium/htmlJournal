@@ -9,27 +9,14 @@
   </head>
   <body onload="init(); freeDraw()">
 	
-    <canvas id="page" width="200px;" height="200px;"></canvas>
+    <div id="page" width="200px;" height="200px;"></div>
 	<div id="layers">
 		<ul  id="layerlist">
-		<li id="canvas0L">Drag This<i class="js-remove"> X</i></li>
-		<li id="canvas1L">This Too<i class="js-remove"> X</i></li>
-		<li id="canvas2L" >And This<i class="js-remove"> X</i></li>
+		
 		</ul>
 		<button id="newlayer">Add</button>
 	</div>
 	<script>
-		function addLayer(){
-			var list = document.getElementById('layerlist');
-			var li = document.createElement('li');
-			li.id="canvas2";
-			list.appendChild(li);
-			li.innerHTML="Layer 2";
-			var i = document.createElement('i');
-			i.className="js-remove";
-			i.innerHTML="X";
-			li.appendChild(i);
-		}
 	var nl_btn = document.getElementById('newlayer');
 	nl_btn.addEventListener("click", addLayer, false);
 	var list = document.getElementById('layerlist');
@@ -41,6 +28,16 @@
 		},
 		onMove: function(evt){
 			//move canvas
+			//update z index
+			var list = document.getElementById("layers".getElementsByTagName("li");
+			for(i = list.length-1; i=>0, i--)
+			{
+				var num = list[i].id;
+				var canvas = document.getElementById("canvas" + num.toString());
+				canvas.currentStyle["zIndex"] = i;
+			}
+			//update layers.txt
+			updateLog();
 		}	
 		});
 	</script>
