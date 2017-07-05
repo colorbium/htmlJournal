@@ -14,11 +14,9 @@
 		<ul  id="layerlist">
 		
 		</ul>
-		<button id="newlayer">Add</button>
+		<button id="newlayer" onclick="addLayer()">Add</button>
 	</div>
 	<script>
-	var nl_btn = document.getElementById('newlayer');
-	nl_btn.addEventListener("click", "addLayer()", false);
 	var list = document.getElementById('layerlist');
 	var sortable = Sortable.create(list,{
 		filter: '.js-remove',
