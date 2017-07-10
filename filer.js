@@ -182,7 +182,7 @@ function newLayer(layerName)
 					//this.results
 					var text = e.target.result;
 					var lines = text.split(/[\r\n]+/g);
-					currLayer = lines.length + 1; 
+					currLayer = lines.length; 
 					addLayertoList(layerName);
 					fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
