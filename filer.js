@@ -99,6 +99,7 @@ function displayFile() {
 								drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + currimg.toString()  + "/" + canvas.id + '.png'; // can also be a remote URL e.g. http://
 								drawing.onload = function() {
 								canvas.getContext("2d").drawImage(drawing,0,0);};
+								addLayertoList(lines[i]);
 						}
 					} 
 				};
