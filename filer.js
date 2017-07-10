@@ -181,7 +181,7 @@ function newLayer()
 					addLayertoList(currLayer);
 					fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
-						var blob = new Blob(['canvas'+currLayer.toString()], {type:'text/plain'});
+						var blob = new Blob(['canvas'+currLayer.toString()+'\n'], {type:'text/plain'});
 						fileWriter.write(blob);
 					},error);
 				};
