@@ -163,7 +163,7 @@ function newLayer(layerName)
 {
 	if(layerName==null)
 	{
-		layerName= 'canvas'+currLayer.toString()
+		layerName= 'canvas1';
 	}
 	var currDir = "page" + currimg.toString();
 	var fs = filesystem;
