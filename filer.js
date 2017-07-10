@@ -122,7 +122,7 @@ fs.root.getFile(currDir+ '/layers.txt', {create:true,exclusive:true}, function(f
 				fileEntry.createWriter(function(fileWriter){
 					},error);
 			},//end success callback
-  }, error);
+		error);
 }
 function addLayertoList(currLayer){
 			var list = document.getElementById('layerlist');
