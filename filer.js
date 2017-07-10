@@ -212,11 +212,12 @@ function newLayer(layerName)
   }
   var slt = document.getElementsByClassName("selected");
   for (i=0; i <slt.length; i++){
-	slt[i].className = "not";
+	
 	if(slt[i].style.zIndex > z)
 	{
 		z = slt[i].style.zIndex;
 	}
+	  slt[i].className = "not";
   }
 newc.style.zIndex = z+1;
 var cdiv = document.getElementById("page");
