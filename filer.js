@@ -88,7 +88,7 @@ function displayFile() {
 						}
 						else
 						{
-							currLayer = lines.length + 1;
+							currLayer = lines.length;
 							//for each line
 							for(i = 0; i<lines.length; i++)
 							{
