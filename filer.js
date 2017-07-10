@@ -115,6 +115,7 @@ function displayFile() {
 //for layer functionality
 function newFile() {
   var fs = filesystem;
+  var currDir = "page" + currimg.toString();
   fs.root.getDirectory('page' + currimg.toString(), {create:true}, function(dirEntry){
 //  newLayer('page' + currimg.toString());
 fs.root.getFile(currDir+ '/layers.txt', {create:true,exclusive:true}, function(fileEntry)
