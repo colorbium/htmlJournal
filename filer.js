@@ -146,7 +146,7 @@ var fs = filesystem;
 		{//file exists
 			fileEntry.createWriter(function(fileWriter){
 			var list = document.getElementById("layers").getElementsByTagName("li");
-				for(i = list.length-1; i=>0; i--)
+				for(i = list.length-1; i>=0; i--)
 				{
 					var num = list[i].id;
 					var canvas = document.getElementById("canvas" + num.toString());
