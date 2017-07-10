@@ -92,6 +92,7 @@ function displayFile() {
 							//for each line
 							for(i = 0; i<lines.length; i++)
 							{
+								newLayer(lines[i]);
 								//find canvas
 								var canvas = document.getElementById(lines[i]);
 								//display img
@@ -99,7 +100,6 @@ function displayFile() {
 								drawing.src = "filesystem:"+window.location.origin +"/persistent/page" + currimg.toString()  + "/" + canvas.id + '.png'; // can also be a remote URL e.g. http://
 								drawing.onload = function() {
 								canvas.getContext("2d").drawImage(drawing,0,0);};
-								addLayertoList(lines[i]);
 						}
 					} 
 				};
@@ -159,8 +159,12 @@ var fs = filesystem;
 		}); //end get file
   }, error); //end get Dir
 }
-function newLayer()
+function newLayer(layerName)
 {
+	if(layerName==Null)
+	{
+		layerName= 'canvas'+currLayer.toString()
+	}
 	var currDir = "page" + currimg.toString();
 	var fs = filesystem;
 	//new element in list
@@ -179,10 +183,10 @@ function newLayer()
 					var text = e.target.result;
 					var lines = text.split(/[\r\n]+/g);
 					currLayer = lines.length + 1; 
-					addLayertoList(currLayer);
+					addLayertoList(layerName);
 					fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
-						var blob = new Blob(['canvas'+currLayer.toString()+'\n'], {type:'text/plain'});
+						var blob = new Blob([ layerName+'\n'], {type:'text/plain'});
 						fileWriter.write(blob);
 					},error);
 				};
