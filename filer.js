@@ -161,7 +161,7 @@ var fs = filesystem;
 }
 function newLayer(layerName)
 {
-	if(layerName==mull)
+	if(layerName==null)
 	{
 		layerName= 'canvas'+currLayer.toString()
 	}
