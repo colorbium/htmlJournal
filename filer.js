@@ -161,10 +161,6 @@ var fs = filesystem;
 }
 function newLayer(layerName)
 {
-	if(layerName==null)
-	{
-		layerName= 'canvas1';
-	}
 	var currDir = "page" + currimg.toString();
 	var fs = filesystem;
 	//new element in list
@@ -183,6 +179,10 @@ function newLayer(layerName)
 					var text = e.target.result;
 					var lines = text.split(/[\r\n]+/g);
 					currLayer = lines.length; 
+					if (layerName==null)
+					{
+						layerName = 'canvas' + currLayer.toString();
+					}
 					addLayertoList(layerName);
 					fileEntry.createWriter(function(fileWriter){
 						fileWriter.seek(fileWriter.length);
