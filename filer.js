@@ -105,7 +105,7 @@ function displayFile() {
 				reader.readAsText(file, "UTF-8");	
 			});
 			
-			}, function(fileEntry){newLayer();});
+			}, function(fileEntry){newFile();});
 		}, 
 			    function(dirEntry){newFile();});//end get Dir
 }
